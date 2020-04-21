@@ -14,6 +14,6 @@ the path can be omitted.
 Base code from: https://floatingoctothorpe.uk/2017/receiving-files-over-http-with-python.html
 
 Modified by Colby Burkett to:
-    Allow for GET
-    Eliminate lag on Windows due to address_string to a reverse lookup on the incoming IP
-    Assign IP Port
+		Allow for GET
+		Eliminate lag on Windows due to address_string to a reverse lookup on the incoming IP
+		Assign IP Port
