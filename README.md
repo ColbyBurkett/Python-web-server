@@ -1,5 +1,5 @@
 # Python-web-server
-** _Tested on Python 3.8_ **
+**_Tested on Python 3.8_**
 
 This webserver is BASIC. Do not hit it from multiple sophisticated browsers, and multiple machines.
 It's meant for simple file get/put. It will likely timeout if under any significant load
