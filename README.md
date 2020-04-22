@@ -2,7 +2,7 @@
 **_Tested on Python v3.8_**
 
 This webserver is BASIC. Do not hit it from multiple sophisticated browsers, and multiple machines.
-It's meant for simple file get/put. It will likely timeout if under any significant load
+It's meant for simple file get/put. It will likely timeout under any significant load
 
 curl or wget can be used to send files with options similar to the following:
 ```
