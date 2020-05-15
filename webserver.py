@@ -33,10 +33,16 @@ class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     
     def do_PUT(self):
         # Save a file following a HTTP PUT request
+        # Provide for additional path info...
+        # No consideration given to input validation
         filename = os.path.basename(self.path)
-
+        extraPath = os.path.dirname(self.path).replace('/',os.sep)
+        fullFileName = os.path.join(os.getcwd()+extraPath, filename)
+        
         # Don't overwrite files
-        if os.path.exists(filename):
+        # Depending on needs, this might need to be reconsidered, as returning
+        # this information could be bad
+        if os.path.exists(fullFileName):
             self.send_response(409, 'Conflict')
             self.end_headers()
             reply_body = '"%s" already exists\n' % filename
@@ -45,7 +51,7 @@ class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # Write the file
         file_length = int(self.headers['Content-Length'])
-        with open(filename, 'wb') as output_file:
+        with open(fullFileName, 'wb') as output_file:
             output_file.write(self.rfile.read(file_length))
         self.send_response(201, 'Created')
         self.end_headers()
@@ -54,6 +60,6 @@ class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     handler = HTTPRequestHandler
-    PORT = 80
+    PORT = 8080
     my_server = socketserver.TCPServer(("", PORT), handler)
     my_server.serve_forever()
