@@ -7,6 +7,7 @@ It's meant for simple file get/put. It will likely timeout under any significant
 curl or wget can be used to send files with options similar to the following:
 ```
   curl -X PUT --upload-file somefile.txt http://localhost:8000
+  curl -T somefile.txt http://localhost:8000
   wget -O- --method=PUT --body-file=somefile.txt http://localhost:8000/somefile.txt
 ```
 __Note__: curl automatically appends the filename onto the end of the URL so
